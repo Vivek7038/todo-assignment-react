@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const TaskInput = ({ task, handleChange, handleClickTaskAdd }) => {
+const TaskInput = ({ task, error,handleChange, handleClickTaskAdd }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     handleClickTaskAdd();
@@ -18,12 +18,12 @@ const TaskInput = ({ task, handleChange, handleClickTaskAdd }) => {
             value={task}
             onChange={handleChange}
           />
-          <button onClick={handleClickTaskAdd} type="submit">
+          <button type="submit">
             Add Task
           </button>
         </form>
         <div className="error-container">
-          {/* {task.trim().length <= 0 && (
+          {error && (
             <Typography
               variant="body2"
               style={{
@@ -32,9 +32,9 @@ const TaskInput = ({ task, handleChange, handleClickTaskAdd }) => {
                 height: "100%",
               }}
             >
-              Task cannot be empty
+              Task should be between 1 to 50 characters
             </Typography>
-          )} */}
+          )}
         </div>
       </div>
     </>

@@ -36,25 +36,25 @@ const EditModal = () => {
   };
 
   return (
-    <Dialog open={showPopup} onClose={handleClose}>
-      <DialogTitle>Edit Task</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          margin="dense"
-          label="Task"
-          type="text"
-          fullWidth
-          value={newTaskText}
-          onChange={(e) => setNewTaskText(e.target.value)}
-          inputProps={{ maxLength: MAX_TASK_LENGTH }}
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleEditTask}>Save</Button>
-      </DialogActions>
-    </Dialog>
+      <Dialog open={showPopup} onClose={handleClose}>
+        <DialogTitle>Edit Task</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Task"
+            type="text"
+            fullWidth
+            value={newTaskText}
+            onChange={(e) => setNewTaskText(e.target.value)}
+            inputProps={{ maxLength: MAX_TASK_LENGTH }}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleEditTask}>Save</Button>
+        </DialogActions>
+      </Dialog>
   );
 };
 

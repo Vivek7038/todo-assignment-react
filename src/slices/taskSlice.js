@@ -6,6 +6,7 @@ const initialState = {
   taskList: [],
   showPopup: false,
   editTaskId: null,
+  error: false,
 };
 
 // Helper function to update localStorage with the current task list
@@ -20,19 +21,25 @@ const tasksSlice = createSlice({
     // Set the current task input value
     setTask(state, action) {
       state.task = action.payload;
+      const formattedTask = state.task;
+      if (formattedTask.length !== 0) {
+        state.error = false;
+      }
     },
-    
     // Add a new task to the task list
     addTask(state) {
       const formattedTask = state.task.trim();
       if (formattedTask.length === 0) { // Check if task length is 0
+        state.error = true;
         return;
       }
       else if (formattedTask.length >= 51) { // Check if task length is greater than or equal to 51
+        state.error = true;
         return;
       }
       else {
         state.taskList.push({ id: uuidv4(), text: formattedTask, isChecked: false });
+        state.error = false;
         state.task = ""; // Reset the task input
         updateLocalStorage(state.taskList); // Update localStorage
       }
