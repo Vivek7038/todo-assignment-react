@@ -2,7 +2,13 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Checkbox } from "@mui/material";
 import { Clear as ClearIcon, Edit as EditIcon } from "@mui/icons-material";
-import { toggleTaskComplete, deleteTask, setTask, setShowPopup, setEditTaskId } from "../slices/taskSlice";
+import {
+  toggleTaskComplete,
+  deleteTask,
+  setTask,
+  setShowPopup,
+  setEditTaskId,
+} from "../slices/taskSlice";
 
 const TaskList = () => {
   const dispatch = useDispatch();
@@ -17,7 +23,6 @@ const TaskList = () => {
   }
 
   function handleTaskEdit(id, text) {
-    dispatch(setTask(text));
     dispatch(setEditTaskId(id));
     dispatch(setShowPopup(true));
   }
