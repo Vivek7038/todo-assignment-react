@@ -7,6 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import ModalButton from "./ModalButton";
 
 const EditModal = () => {
   const dispatch = useDispatch();
@@ -36,25 +37,25 @@ const EditModal = () => {
   };
 
   return (
-      <Dialog open={showPopup} onClose={handleClose}>
-        <DialogTitle>Edit Task</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Task"
-            type="text"
-            fullWidth
-            value={newTaskText}
-            onChange={(e) => setNewTaskText(e.target.value)}
-            inputProps={{ maxLength: MAX_TASK_LENGTH }}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleEditTask}>Save</Button>
-        </DialogActions>
-      </Dialog>
+    <Dialog open={showPopup} onClose={handleClose} maxWidth="sm" fullWidth>
+      <DialogTitle>Edit Task</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          label="Task"
+          type="text"
+          fullWidth
+          value={newTaskText}
+          onChange={(e) => setNewTaskText(e.target.value)}
+          inputProps={{ maxLength: MAX_TASK_LENGTH }}
+        />
+      </DialogContent>
+      <DialogActions>
+        <ModalButton   onClick={handleClose} label={"Cancel"}/>
+        <ModalButton   onClick={handleEditTask} label={"Save"}/>
+      </DialogActions>
+    </Dialog>
   );
 };
 
