@@ -1,7 +1,13 @@
 import { Typography } from "@mui/material";
 import React from "react";
 
-const TaskInput = ({ task, error,handleChange, handleClickTaskAdd }) => {
+const TaskInput = ({
+  task,
+  error,
+  handleChange,
+  handleClickTaskAdd,
+  maxCharacterLimit,
+}) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
     handleClickTaskAdd();
@@ -18,9 +24,7 @@ const TaskInput = ({ task, error,handleChange, handleClickTaskAdd }) => {
             value={task}
             onChange={handleChange}
           />
-          <button type="submit">
-            Add Task
-          </button>
+          <button type="submit">Add Task</button>
         </form>
         <div className="error-container">
           {error && (
@@ -32,7 +36,7 @@ const TaskInput = ({ task, error,handleChange, handleClickTaskAdd }) => {
                 height: "100%",
               }}
             >
-              Task should be between 1 to 50 characters
+              {`  Task should be between 1 to  ${maxCharacterLimit} characters `}
             </Typography>
           )}
         </div>

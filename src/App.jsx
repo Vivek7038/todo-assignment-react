@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const { task, taskList ,error} = useSelector((state) => state.tasks);
+  const { task, taskList ,error,maxCharacterLimit} = useSelector((state) => state.tasks);
 
   // Load task list from localStorage on initial render
   useEffect(() => {
@@ -42,6 +42,7 @@ function App() {
           handleChange={handleChange}
           handleClickTaskAdd={handleClickTaskAdd}
           error={error}
+          maxCharacterLimit={maxCharacterLimit}
         />
         <TaskList />
       </main>

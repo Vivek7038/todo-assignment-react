@@ -17,8 +17,7 @@ const EditModal = () => {
 
   const taskToEdit = taskList.find((task) => task.id === editTaskId);
   const [newTaskText, setNewTaskText] = useState("");
-
-  const MAX_TASK_LENGTH = 50;
+  const MAX_TASK_LENGTH = useSelector((state) => state.tasks.maxCharacterLimit);
   useEffect(() => {
     if (taskToEdit) {
       setNewTaskText(taskToEdit.text);
@@ -52,8 +51,8 @@ const EditModal = () => {
         />
       </DialogContent>
       <DialogActions>
-        <ModalButton   onClick={handleClose} label={"Cancel"}/>
-        <ModalButton   onClick={handleEditTask} label={"Save"}/>
+        <ModalButton onClick={handleClose} label={"Cancel"} />
+        <ModalButton onClick={handleEditTask} label={"Save"} />
       </DialogActions>
     </Dialog>
   );

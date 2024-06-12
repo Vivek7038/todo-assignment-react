@@ -7,6 +7,7 @@ const initialState = {
   showPopup: false,
   editTaskId: null,
   error: false,
+  maxCharacterLimit: 50,
 };
 
 // Helper function to update localStorage with the current task list
@@ -33,7 +34,7 @@ const tasksSlice = createSlice({
         state.error = true;
         return;
       }
-      else if (formattedTask.length >= 51) { // Check if task length is greater than or equal to 51
+      else if (formattedTask.length >= state.maxCharacterLimit) { // Check if task length is greater than or equal to maxCharacterLimit
         state.error = true;
         return;
       }
